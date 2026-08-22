@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Core brand colors sampled directly from the logo -->
+    <color name="maroon_primary">#A51F2D</color>
+    <color name="maroon_dark">#7A1620</color>
+    <color name="leaf_green">#72BD38</color>
+    <color name="leaf_green_dark">#648F24</color>
+    <color name="person_blue">#4980C4</color>
+    <color name="person_green">#72BD38</color>
+    <color name="person_orange">#F2B01D</color>
+    <color name="person_red">#DD1F3A</color>
+
+    <!-- Neutrals -->
+    <color name="background_light">#F5F3F0</color>
+    <color name="surface_white">#FFFFFF</color>
+    <color name="text_primary">#2B2B2B</color>
+    <color name="text_secondary">#7A7A7A</color>
+    <color name="text_on_maroon">#FFFFFF</color>
+</resources>
