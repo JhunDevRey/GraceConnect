@@ -25,4 +25,10 @@
     <string name="nav_bible">Bible</string>
     <string name="nav_events">Events</string>
     <string name="nav_profile">Profile</string>
+
+    <string name="sermons_desc">This is the Sermons screen. Recent sermon recordings would be listed here.</string>
+    <string name="events_desc">This is the Events screen. Upcoming church events would be listed here.</string>
+    <string name="give_desc">This is the Give screen. Giving/donation options would be listed here.</string>
+    <string name="community_desc">This is the Community screen. Community groups and forums would be listed here.</string>
+
 </resources>

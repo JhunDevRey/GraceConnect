@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_light">#F5F3F0</color>
+    <color name="leaf_green">#72BD38</color>
+    <color name="leaf_green_dark">#648F24</color>
+    <color name="maroon_dark">#7A1620</color>
+    <color name="maroon_primary">#A51F2D</color>
+    <color name="person_blue">#4980C4</color>
+    <color name="person_green">#72BD38</color>
+    <color name="person_orange">#F2B01D</color>
+    <color name="person_red">#DD1F3A</color>
+    <color name="surface_white">#FFFFFF</color>
+    <color name="text_on_maroon">#FFFFFF</color>
+    <color name="text_primary">#2B2B2B</color>
+    <color name="text_secondary">#6B6B6B</color>
+    <string name="app_name">Grace Connect</string>
+    <string name="card_community">Community</string>
+    <string name="card_events">Events</string>
+    <string name="card_give">Give</string>
+    <string name="card_sermons">Sermons</string>
+    <string name="community_desc">This is the Community screen. Community groups and forums would be listed here.</string>
+    <string name="event_1_sub">Sun · 9:00 AM · Main Hall</string>
+    <string name="event_1_title">Sunday Worship Service</string>
+    <string name="event_2_sub">Fri · 6:30 PM · Fellowship Hall</string>
+    <string name="event_2_title">Youth Fellowship Night</string>
+    <string name="events_desc">This is the Events screen. Upcoming church events would be listed here.</string>
+    <string name="give_desc">This is the Give screen. Giving/donation options would be listed here.</string>
+    <string name="nav_bible">Bible</string>
+    <string name="nav_events">Events</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_profile">Profile</string>
+    <string name="section_explore">Explore</string>
+    <string name="section_upcoming">Upcoming Events</string>
+    <string name="sermons_desc">This is the Sermons screen. Recent sermon recordings would be listed here.</string>
+    <string name="tagline">Growing together in faith</string>
+    <string name="verse_ref">— Proverbs 3:5</string>
+    <string name="verse_text">"Trust in the Lord with all your heart, and lean not on your own understanding."</string>
+    <string name="verse_title">Verse of the Day</string>
+    <string name="welcome_message">Welcome back, Friend!</string>
+    <string name="welcome_sub">Here\'s what\'s happening this week</string>
+    <style name="Base.Theme.GraceConnect" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.GraceConnect" parent="Base.Theme.GraceConnect"/>
+</resources>
