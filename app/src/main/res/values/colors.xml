@@ -16,4 +16,5 @@
     <color name="text_primary">#2B2B2B</color>
     <color name="text_secondary">#6B6B6B</color>
     <color name="text_on_maroon">#FFFFFF</color>
+    <color name="maroon_container">#F8DFE2</color>
 </resources>

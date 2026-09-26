@@ -24,6 +24,8 @@
         <activity android:name=".EventsActivity" android:exported="false"/>
         <activity android:name=".GiveActivity" android:exported="false"/>
         <activity android:name=".CommunityActivity" android:exported="false"/>
+        <activity android:name=".BibleActivity" android:exported="false"/>
+        <activity android:name=".ProfileActivity" android:exported="false"/>
     </application>
 
 </manifest>

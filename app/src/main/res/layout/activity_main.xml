@@ -78,10 +78,10 @@
             android:padding="18dp">
 
             <TextView
+                android:id="@+id/welcomeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
-                android:text="@string/welcome_message"
                 android:textColor="@color/text_primary"
                 android:textSize="17sp" />
 
@@ -258,8 +258,12 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Verse of the day card -->
+            <!-- Verse of the day card (tap to share) -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/verseCard"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -282,6 +286,7 @@
                         android:textSize="13sp" />
 
                     <TextView
+                        android:id="@+id/verseText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -292,6 +297,7 @@
                         android:lineSpacingExtra="4dp" />
 
                     <TextView
+                        android:id="@+id/verseRef"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -303,16 +309,39 @@
             </androidx.cardview.widget.CardView>
 
             <!-- Upcoming events section -->
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/section_upcoming"
-                android:textColor="@color/text_primary"
-                android:textSize="16sp" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/section_upcoming"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/seeAllEvents"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:fontFamily="sans-serif-medium"
+                    android:padding="4dp"
+                    android:text="@string/see_all"
+                    android:textColor="@color/maroon_primary"
+                    android:textSize="13sp" />
+            </LinearLayout>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/event1Card"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -340,6 +369,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/event1Title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/event_1_title"
@@ -348,6 +378,7 @@
                             android:fontFamily="sans-serif-medium" />
 
                         <TextView
+                            android:id="@+id/event1Sub"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
@@ -359,6 +390,10 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/event2Card"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -386,6 +421,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/event2Title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/event_2_title"
@@ -394,6 +430,7 @@
                             android:fontFamily="sans-serif-medium" />
 
                         <TextView
+                            android:id="@+id/event2Sub"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
@@ -415,6 +452,7 @@
         android:background="@color/surface_white"
         app:itemIconTint="@drawable/nav_item_color"
         app:itemTextColor="@drawable/nav_item_color"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

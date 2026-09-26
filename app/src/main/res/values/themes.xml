@@ -1,8 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.GraceConnect" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <!-- Base application theme. The app's screens use a light palette, so the theme stays light in dark mode too. -->
+    <style name="Base.Theme.GraceConnect" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/maroon_primary</item>
+        <item name="colorOnPrimary">@color/text_on_maroon</item>
+        <item name="colorPrimaryContainer">@color/maroon_container</item>
+        <item name="colorOnPrimaryContainer">@color/maroon_dark</item>
+        <item name="colorSecondaryContainer">@color/maroon_container</item>
+        <item name="colorOnSecondaryContainer">@color/maroon_dark</item>
+        <item name="android:windowBackground">@color/background_light</item>
     </style>
 
     <style name="Theme.GraceConnect" parent="Base.Theme.GraceConnect" />
