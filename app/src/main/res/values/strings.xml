@@ -2,7 +2,8 @@
 <resources>
     <string name="app_name">Grace Connect</string>
     <string name="tagline">Growing together in faith</string>
-    <string name="welcome_message">Welcome back, Friend!</string>
+    <string name="welcome_message">Welcome back, %1$s!</string>
+    <string name="welcome_default_name">Friend</string>
     <string name="welcome_sub">Here\'s what\'s happening this week</string>
 
     <string name="section_explore">Explore</string>
@@ -12,10 +13,12 @@
     <string name="card_community">Community</string>
 
     <string name="verse_title">Verse of the Day</string>
-    <string name="verse_text">"Trust in the Lord with all your heart, and lean not on your own understanding."</string>
+    <string name="verse_text">"Trust in the LORD with all thine heart; and lean not unto thine own understanding."</string>
     <string name="verse_ref">— Proverbs 3:5</string>
+    <string name="verse_tap_hint">Tap to share</string>
 
     <string name="section_upcoming">Upcoming Events</string>
+    <string name="see_all">See all</string>
     <string name="event_1_title">Sunday Worship Service</string>
     <string name="event_1_sub">Sun · 9:00 AM · Main Hall</string>
     <string name="event_2_title">Youth Fellowship Night</string>
@@ -26,9 +29,100 @@
     <string name="nav_events">Events</string>
     <string name="nav_profile">Profile</string>
 
-    <string name="sermons_desc">This is the Sermons screen. Recent sermon recordings would be listed here.</string>
-    <string name="events_desc">This is the Events screen. Upcoming church events would be listed here.</string>
-    <string name="give_desc">This is the Give screen. Giving/donation options would be listed here.</string>
-    <string name="community_desc">This is the Community screen. Community groups and forums would be listed here.</string>
+    <!-- Common -->
+    <string name="back">Back</string>
+    <string name="share">Share</string>
+    <string name="close">Close</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="no_app_found">No app found to open this</string>
+    <string name="filter_all">All</string>
+    <string name="filter_saved">Saved</string>
 
+    <!-- Sermons -->
+    <string name="search_sermons">Search by title, speaker, or scripture</string>
+    <string name="no_sermons_found">No sermons match your search.</string>
+    <string name="no_saved_sermons">You haven\'t saved any sermons yet.\nTap the bookmark on a sermon to save it.</string>
+    <string name="save_sermon">Save sermon</string>
+    <string name="unsave_sermon">Remove from saved</string>
+    <string name="sermon_saved">Sermon saved</string>
+    <string name="sermon_unsaved">Removed from saved</string>
+    <string name="watch">Watch</string>
+    <string name="read_scripture">Read scripture</string>
+    <string name="sermon_share_text">Check out this sermon: \"%1$s\" by %2$s (%3$s)\n%4$s</string>
+
+    <!-- Events -->
+    <string name="filter_all_events">All events</string>
+    <string name="filter_going">My RSVPs</string>
+    <string name="no_rsvps">You haven\'t RSVP\'d to any events yet.</string>
+    <string name="rsvp">RSVP</string>
+    <string name="going">Going ✓</string>
+    <string name="you_are_going">You\'re going!</string>
+    <string name="rsvp_added">See you at %1$s!</string>
+    <string name="rsvp_removed">RSVP cancelled</string>
+    <string name="add_to_calendar">Calendar</string>
+    <string name="directions">Directions</string>
+
+    <!-- Give -->
+    <string name="give_fund_label">Choose a fund</string>
+    <string name="give_amount_label">Choose an amount</string>
+    <string name="give_custom_amount">Amount</string>
+    <string name="give_note">Note (optional)</string>
+    <string name="give_now">Give Now</string>
+    <string name="give_demo_note">Demo mode: gifts are recorded on this device only. No real payment is processed.</string>
+    <string name="give_history">My Giving</string>
+    <string name="give_total">Total: %1$s</string>
+    <string name="give_empty">No gifts yet.</string>
+    <string name="give_invalid_amount">Please enter an amount greater than zero</string>
+    <string name="give_confirm_title">Confirm your gift</string>
+    <string name="give_confirm_message">Give %1$s to %2$s?</string>
+    <string name="give_confirm">Give</string>
+    <string name="give_thanks">Thank you for your generosity! God bless you.</string>
+
+    <!-- Community -->
+    <string name="small_groups">Small Groups</string>
+    <string name="prayer_wall">Prayer Wall</string>
+    <string name="members">%1$d members</string>
+    <string name="join_group">Join group</string>
+    <string name="leave_group">Joined ✓</string>
+    <string name="joined_group">Welcome to %1$s!</string>
+    <string name="left_group">You left %1$s</string>
+    <string name="share_prayer_request">Share a prayer request</string>
+    <string name="prayer_hint">How can we pray for you?</string>
+    <string name="post_anonymously">Post anonymously</string>
+    <string name="post">Post</string>
+    <string name="prayer_empty_error">Please write your prayer request</string>
+    <string name="prayer_posted">Your request was posted. We\'re praying with you!</string>
+    <string name="anonymous">Anonymous</string>
+    <string name="pray">Pray · %1$d</string>
+    <string name="prayed">Prayed ✓ · %1$d</string>
+
+    <!-- Bible -->
+    <string name="read_chapter">Read chapter</string>
+    <string name="open_full_bible">Open the full Bible</string>
+    <string name="verses_to_remember">Verses to Remember</string>
+    <string name="search_verses">Search verses</string>
+    <string name="no_verses_found">No verses match your search.</string>
+    <string name="no_saved_verses">You haven\'t saved any verses yet.</string>
+    <string name="verse_saved">Verse saved</string>
+    <string name="verse_unsaved">Removed from saved</string>
+    <string name="save_verse">Save verse</string>
+
+    <!-- Profile -->
+    <string name="my_details">My Details</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="stat_events">Events</string>
+    <string name="stat_groups">Groups</string>
+    <string name="stat_sermons">Sermons</string>
+    <string name="stat_given">Given</string>
+    <string name="profile_saved">Profile saved</string>
+    <string name="invalid_email">Please enter a valid email</string>
+    <string name="guest">Guest</string>
+    <string name="clear_data">Clear all my data</string>
+    <string name="clear_data_title">Clear all data?</string>
+    <string name="clear_data_message">This removes your profile, RSVPs, saved items, groups, prayer requests, and giving history from this device.</string>
+    <string name="clear">Clear</string>
+    <string name="data_cleared">All data cleared</string>
 </resources>
