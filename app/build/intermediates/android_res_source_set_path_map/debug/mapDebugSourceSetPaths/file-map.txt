@@ -1,7 +1,0 @@
-com.example.graceconnect.app-pngs-0 C:\Users\jhund\AndroidStudioProjects\GraceConnect\app\build\generated\res\pngs\debug
-com.example.graceconnect.app-updated_navigation_xml-1 C:\Users\jhund\AndroidStudioProjects\GraceConnect\app\build\generated\updated_navigation_xml\debug
-com.example.graceconnect.app-packageDebugResources-2 C:\Users\jhund\AndroidStudioProjects\GraceConnect\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.example.graceconnect.app-packageDebugResources-3 C:\Users\jhund\AndroidStudioProjects\GraceConnect\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.example.graceconnect.app-debug-4 C:\Users\jhund\AndroidStudioProjects\GraceConnect\app\build\intermediates\merged_res\debug\mergeDebugResources
-com.example.graceconnect.app-debug-5 C:\Users\jhund\AndroidStudioProjects\GraceConnect\app\src\debug\res
-com.example.graceconnect.app-main-6 C:\Users\jhund\AndroidStudioProjects\GraceConnect\app\src\main\res
