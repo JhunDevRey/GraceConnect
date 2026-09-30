@@ -45,7 +45,7 @@ class EventsActivity : BaseActivity() {
             findViewById<TextView>(R.id.eventMonth).text = Format.month(start)
             findViewById<TextView>(R.id.eventDay).text = Format.dayOfMonth(start)
             findViewById<TextView>(R.id.eventTitle).text = event.title
-            findViewById<TextView>(R.id.eventWhen).text = "${Format.dayAndTime(start)} · ${event.location}"
+            findViewById<TextView>(R.id.eventWhen).text = getString(R.string.dot_separated, Format.dayAndTime(start), event.location)
             findViewById<TextView>(R.id.eventDescription).text = event.description
             findViewById<TextView>(R.id.eventGoing).isVisible = isGoing
 

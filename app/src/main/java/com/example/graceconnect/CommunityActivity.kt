@@ -9,6 +9,7 @@ import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.chip.ChipGroup
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
@@ -56,8 +57,9 @@ class CommunityActivity : BaseActivity() {
             groupList.addView(layoutInflater.inflate(R.layout.item_group, groupList, false).apply {
                 findViewById<TextView>(R.id.groupName).text = group.name
                 findViewById<TextView>(R.id.groupSchedule).text = group.schedule
+                val memberCount = group.members + if (isMember) 1 else 0
                 findViewById<TextView>(R.id.groupMembers).text =
-                    getString(R.string.members, group.members + if (isMember) 1 else 0)
+                    resources.getQuantityString(R.plurals.members, memberCount, memberCount)
                 findViewById<TextView>(R.id.groupDescription).text = group.description
                 findViewById<MaterialButton>(R.id.joinButton).apply {
                     setText(if (isMember) R.string.leave_group else R.string.join_group)
@@ -94,7 +96,7 @@ class CommunityActivity : BaseActivity() {
         AppPrefs.getPrayers(this).forEach { prayer ->
             prayerList.addView(layoutInflater.inflate(R.layout.item_prayer, prayerList, false).apply {
                 val ago = DateUtils.getRelativeTimeSpanString(prayer.time, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS)
-                findViewById<TextView>(R.id.prayerAuthor).text = "${prayer.name} · $ago"
+                findViewById<TextView>(R.id.prayerAuthor).text = getString(R.string.dot_separated, prayer.name, ago)
                 findViewById<TextView>(R.id.prayerText).text = prayer.text
                 findViewById<MaterialButton>(R.id.prayButton).apply {
                     text = getString(if (prayer.prayedByMe) R.string.prayed else R.string.pray, prayer.prayCount)
@@ -103,7 +105,24 @@ class CommunityActivity : BaseActivity() {
                         renderPrayers()
                     }
                 }
+                findViewById<MaterialButton>(R.id.deleteButton).apply {
+                    isVisible = prayer.isMine
+                    setOnClickListener { confirmDelete(prayer) }
+                }
             })
         }
+    }
+
+    private fun confirmDelete(prayer: PrayerRequest) {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.delete_prayer_title)
+            .setMessage(R.string.delete_prayer_message)
+            .setPositiveButton(R.string.delete) { _, _ ->
+                AppPrefs.deletePrayer(this, prayer.id)
+                toast(getString(R.string.prayer_deleted))
+                renderPrayers()
+            }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
     }
 }

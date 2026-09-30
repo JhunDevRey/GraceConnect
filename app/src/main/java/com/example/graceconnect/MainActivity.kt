@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             val verse = ChurchData.verseOfTheDay()
             val send = Intent(Intent.ACTION_SEND)
                 .setType("text/plain")
-                .putExtra(Intent.EXTRA_TEXT, "\"${verse.text}\" — ${verse.reference}")
+                .putExtra(Intent.EXTRA_TEXT, getString(R.string.verse_share_text, verse.text, verse.reference))
             startActivity(Intent.createChooser(send, getString(R.string.share)))
         }
 
@@ -77,8 +77,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.welcomeText).text = getString(R.string.welcome_message, name)
 
         val verse = ChurchData.verseOfTheDay()
-        findViewById<TextView>(R.id.verseText).text = "\"${verse.text}\""
-        findViewById<TextView>(R.id.verseRef).text = "— ${verse.reference}"
+        findViewById<TextView>(R.id.verseText).text = getString(R.string.quoted, verse.text)
+        findViewById<TextView>(R.id.verseRef).text = getString(R.string.verse_attribution, verse.reference)
 
         val upcoming = ChurchData.upcomingEvents()
         bindEvent(upcoming[0], R.id.event1Title, R.id.event1Sub)
@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun bindEvent(event: ChurchEvent, titleId: Int, subId: Int) {
         findViewById<TextView>(titleId).text = event.title
-        findViewById<TextView>(subId).text = "${Format.dayAndTime(event.nextStart())} · ${event.location}"
+        findViewById<TextView>(subId).text = getString(R.string.dot_separated, Format.dayAndTime(event.nextStart()), event.location)
     }
 
     private fun openOnClick(viewId: Int, screen: Class<*>) {

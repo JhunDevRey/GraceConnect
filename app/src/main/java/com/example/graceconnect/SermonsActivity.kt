@@ -53,7 +53,7 @@ class SermonsActivity : BaseActivity() {
         layoutInflater.inflate(R.layout.item_sermon, list, false).apply {
             findViewById<TextView>(R.id.sermonTitle).text = sermon.title
             findViewById<TextView>(R.id.sermonMeta).text =
-                "${sermon.speaker} · ${Format.date(sermon.date())} · ${sermon.durationMinutes} min"
+                getString(R.string.sermon_meta, sermon.speaker, Format.date(sermon.date()), sermon.durationMinutes)
             findViewById<TextView>(R.id.sermonScripture).text = sermon.scripture
 
             findViewById<ImageButton>(R.id.saveButton).apply {

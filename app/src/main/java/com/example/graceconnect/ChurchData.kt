@@ -137,6 +137,9 @@ object ChurchData {
 
     val presetAmounts = listOf(100, 250, 500, 1000)
 
+    /** Largest single gift accepted, to catch typos like an extra zero or two. */
+    const val MAX_GIFT = 1_000_000.0
+
     fun verseOfTheDay(): Verse =
         verses[Calendar.getInstance().get(Calendar.DAY_OF_YEAR) % verses.size]
 

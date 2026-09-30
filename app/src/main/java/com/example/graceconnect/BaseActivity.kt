@@ -30,7 +30,8 @@ abstract class BaseActivity : AppCompatActivity() {
         val header = findViewById<View>(R.id.header)
         header.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, headerColor))
         findViewById<TextView>(R.id.screen_title).text = title
-        findViewById<View>(R.id.backButton).setOnClickListener { finish() }
+        // Go through the dispatcher so screens that intercept back (e.g. unsaved edits) also catch the header button.
+        findViewById<View>(R.id.backButton).setOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
         // Let the header color extend behind the status bar; pad everything else away from system bars.
         val root = findViewById<ViewGroup>(android.R.id.content).getChildAt(0)
