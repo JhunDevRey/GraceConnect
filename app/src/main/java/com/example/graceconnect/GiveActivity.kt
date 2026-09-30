@@ -65,9 +65,13 @@ class GiveActivity : BaseActivity() {
         }
 
     private fun confirmGift() {
-        val amount = amountInput.text?.toString()?.toDoubleOrNull()
+        val amount = Format.parseAmount(amountInput.text?.toString().orEmpty())
         if (amount == null || amount <= 0) {
             amountLayout.error = getString(R.string.give_invalid_amount)
+            return
+        }
+        if (amount > ChurchData.MAX_GIFT) {
+            amountLayout.error = getString(R.string.give_amount_too_large, Format.money(ChurchData.MAX_GIFT))
             return
         }
         val fund = fundChips.findViewById<Chip>(fundChips.checkedChipId).text.toString()
@@ -99,7 +103,8 @@ class GiveActivity : BaseActivity() {
             list.addView(layoutInflater.inflate(R.layout.item_gift, list, false).apply {
                 findViewById<TextView>(R.id.giftFund).text = gift.fund
                 findViewById<TextView>(R.id.giftDate).text =
-                    if (gift.note.isEmpty()) Format.date(gift.time) else "${Format.date(gift.time)} · ${gift.note}"
+                    if (gift.note.isEmpty()) Format.date(gift.time)
+                    else getString(R.string.dot_separated, Format.date(gift.time), gift.note)
                 findViewById<TextView>(R.id.giftAmount).text = Format.money(gift.amount)
             })
         }

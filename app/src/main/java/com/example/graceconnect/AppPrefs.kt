@@ -14,7 +14,9 @@ data class PrayerRequest(
     val text: String,
     val time: Long,
     val prayCount: Int,
-    val prayedByMe: Boolean
+    val prayedByMe: Boolean,
+    /** True for requests posted from this device, which the user may delete. */
+    val isMine: Boolean = false
 )
 
 /** Everything the user does in the app is stored on the device with SharedPreferences. */
@@ -93,7 +95,8 @@ object AppPrefs {
             val o = array.getJSONObject(i)
             PrayerRequest(
                 o.getString("id"), o.getString("name"), o.getString("text"),
-                o.getLong("time"), o.getInt("count"), o.getBoolean("prayed")
+                o.getLong("time"), o.getInt("count"), o.getBoolean("prayed"),
+                o.optBoolean("mine")
             )
         }.sortedByDescending { it.time }
     }
@@ -108,6 +111,7 @@ object AppPrefs {
                 put("time", p.time)
                 put("count", p.prayCount)
                 put("prayed", p.prayedByMe)
+                put("mine", p.isMine)
             })
         }
         prefs(c).edit { putString(KEY_PRAYERS, array.toString()) }
@@ -115,7 +119,7 @@ object AppPrefs {
 
     fun addPrayer(c: Context, name: String, text: String) {
         val now = System.currentTimeMillis()
-        savePrayers(c, listOf(PrayerRequest(now.toString(), name, text, now, 0, false)) + getPrayers(c))
+        savePrayers(c, listOf(PrayerRequest(now.toString(), name, text, now, 0, false, isMine = true)) + getPrayers(c))
     }
 
     fun togglePrayed(c: Context, id: String) {
@@ -126,6 +130,10 @@ object AppPrefs {
                 prayCount = it.prayCount + if (it.prayedByMe) -1 else 1
             )
         })
+    }
+
+    fun deletePrayer(c: Context, id: String) {
+        savePrayers(c, getPrayers(c).filterNot { it.id == id && it.isMine })
     }
 
     private fun samplePrayers(): List<PrayerRequest> {

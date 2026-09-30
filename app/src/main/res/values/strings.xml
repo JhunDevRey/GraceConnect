@@ -15,7 +15,10 @@
     <string name="verse_title">Verse of the Day</string>
     <string name="verse_text">"Trust in the LORD with all thine heart; and lean not unto thine own understanding."</string>
     <string name="verse_ref">— Proverbs 3:5</string>
-    <string name="verse_tap_hint">Tap to share</string>
+    <string name="quoted">\"%1$s\"</string>
+    <string name="verse_attribution">— %1$s</string>
+    <string name="verse_attribution_kjv">— %1$s (KJV)</string>
+    <string name="verse_share_text">\"%1$s\" — %2$s</string>
 
     <string name="section_upcoming">Upcoming Events</string>
     <string name="see_all">See all</string>
@@ -35,6 +38,9 @@
     <string name="close">Close</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
+    <string name="dot_separated">%1$s · %2$s</string>
+    <string name="discard">Discard</string>
+    <string name="delete">Delete</string>
     <string name="no_app_found">No app found to open this</string>
     <string name="filter_all">All</string>
     <string name="filter_saved">Saved</string>
@@ -43,6 +49,7 @@
     <string name="search_sermons">Search by title, speaker, or scripture</string>
     <string name="no_sermons_found">No sermons match your search.</string>
     <string name="no_saved_sermons">You haven\'t saved any sermons yet.\nTap the bookmark on a sermon to save it.</string>
+    <string name="sermon_meta">%1$s · %2$s · %3$d min</string>
     <string name="save_sermon">Save sermon</string>
     <string name="unsave_sermon">Remove from saved</string>
     <string name="sermon_saved">Sermon saved</string>
@@ -74,6 +81,7 @@
     <string name="give_total">Total: %1$s</string>
     <string name="give_empty">No gifts yet.</string>
     <string name="give_invalid_amount">Please enter an amount greater than zero</string>
+    <string name="give_amount_too_large">Please enter an amount up to %1$s</string>
     <string name="give_confirm_title">Confirm your gift</string>
     <string name="give_confirm_message">Give %1$s to %2$s?</string>
     <string name="give_confirm">Give</string>
@@ -82,7 +90,6 @@
     <!-- Community -->
     <string name="small_groups">Small Groups</string>
     <string name="prayer_wall">Prayer Wall</string>
-    <string name="members">%1$d members</string>
     <string name="join_group">Join group</string>
     <string name="leave_group">Joined ✓</string>
     <string name="joined_group">Welcome to %1$s!</string>
@@ -96,6 +103,9 @@
     <string name="anonymous">Anonymous</string>
     <string name="pray">Pray · %1$d</string>
     <string name="prayed">Prayed ✓ · %1$d</string>
+    <string name="delete_prayer_title">Delete this request?</string>
+    <string name="delete_prayer_message">Your prayer request will be removed from the prayer wall.</string>
+    <string name="prayer_deleted">Prayer request deleted</string>
 
     <!-- Bible -->
     <string name="read_chapter">Read chapter</string>
@@ -107,6 +117,7 @@
     <string name="verse_saved">Verse saved</string>
     <string name="verse_unsaved">Removed from saved</string>
     <string name="save_verse">Save verse</string>
+    <string name="unsave_verse">Remove verse from saved</string>
 
     <!-- Profile -->
     <string name="my_details">My Details</string>
@@ -125,4 +136,11 @@
     <string name="clear_data_message">This removes your profile, RSVPs, saved items, groups, prayer requests, and giving history from this device.</string>
     <string name="clear">Clear</string>
     <string name="data_cleared">All data cleared</string>
+    <string name="unsaved_changes_title">Discard changes?</string>
+    <string name="unsaved_changes_message">You have unsaved changes to your details.</string>
+
+    <plurals name="members">
+        <item quantity="one">%1$d member</item>
+        <item quantity="other">%1$d members</item>
+    </plurals>
 </resources>

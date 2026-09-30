@@ -23,8 +23,8 @@ class BibleActivity : BaseActivity() {
         setupScreen(getString(R.string.nav_bible), R.color.maroon_primary)
 
         val daily = ChurchData.verseOfTheDay()
-        findViewById<TextView>(R.id.dailyVerseText).text = "\"${daily.text}\""
-        findViewById<TextView>(R.id.dailyVerseRef).text = "— ${daily.reference} (KJV)"
+        findViewById<TextView>(R.id.dailyVerseText).text = getString(R.string.quoted, daily.text)
+        findViewById<TextView>(R.id.dailyVerseRef).text = getString(R.string.verse_attribution_kjv, daily.reference)
         findViewById<TextView>(R.id.shareDailyButton).setOnClickListener { shareVerse(daily) }
         findViewById<TextView>(R.id.readDailyButton).setOnClickListener { openUrl(daily.chapterUrl()) }
         findViewById<TextView>(R.id.openBibleButton).setOnClickListener { openUrl(ChurchData.bibleUrl()) }
@@ -57,7 +57,7 @@ class BibleActivity : BaseActivity() {
                 findViewById<TextView>(R.id.verseRef).text = verse.reference
                 findViewById<ImageButton>(R.id.favoriteButton).apply {
                     setImageResource(if (isFavorite) R.drawable.ic_bookmark else R.drawable.ic_bookmark_border)
-                    contentDescription = getString(R.string.save_verse)
+                    contentDescription = getString(if (isFavorite) R.string.unsave_verse else R.string.save_verse)
                     setOnClickListener {
                         val saved = AppPrefs.toggle(this@BibleActivity, AppPrefs.KEY_FAVORITE_VERSES, verse.id)
                         toast(getString(if (saved) R.string.verse_saved else R.string.verse_unsaved))
@@ -82,5 +82,5 @@ class BibleActivity : BaseActivity() {
             .show()
     }
 
-    private fun shareVerse(verse: Verse) = shareText("\"${verse.text}\" — ${verse.reference}")
+    private fun shareVerse(verse: Verse) = shareText(getString(R.string.verse_share_text, verse.text, verse.reference))
 }
