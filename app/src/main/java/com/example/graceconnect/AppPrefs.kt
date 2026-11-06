@@ -23,6 +23,7 @@ data class PrayerRequest(
 object AppPrefs {
     private const val FILE = "grace_connect_prefs"
 
+    private const val KEY_ACCOUNT_ID = "account_id"
     private const val KEY_NAME = "name"
     private const val KEY_EMAIL = "email"
     private const val KEY_PHONE = "phone"
@@ -47,6 +48,19 @@ object AppPrefs {
             putString(KEY_NAME, name)
             putString(KEY_EMAIL, email)
             putString(KEY_PHONE, phone)
+        }
+    }
+
+    /**
+     * Called after a successful login or registration. Data on the device belongs to one account, so it is
+     * cleared when a different account signs in; empty profile fields are filled in from the account.
+     */
+    fun onSignedIn(c: Context, accountId: String, name: String, email: String) {
+        if (prefs(c).getString(KEY_ACCOUNT_ID, null) != accountId) clearAll(c)
+        prefs(c).edit {
+            putString(KEY_ACCOUNT_ID, accountId)
+            if (getName(c).isBlank()) putString(KEY_NAME, name)
+            if (getEmail(c).isBlank()) putString(KEY_EMAIL, email)
         }
     }
 
@@ -147,7 +161,12 @@ object AppPrefs {
 
     // ---------- Reset ----------
 
+    /** Clears everything except which account the data belongs to, so the user stays signed in. */
     fun clearAll(c: Context) {
-        prefs(c).edit { clear() }
+        val accountId = prefs(c).getString(KEY_ACCOUNT_ID, null)
+        prefs(c).edit {
+            clear()
+            putString(KEY_ACCOUNT_ID, accountId)
+        }
     }
 }

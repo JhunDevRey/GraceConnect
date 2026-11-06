@@ -58,6 +58,22 @@ class GiveActivity : BaseActivity() {
         renderHistory()
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(STATE_FUND_INDEX, fundChips.indexOfChild(fundChips.findViewById(fundChips.checkedChipId)))
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        // Chips get fresh IDs each time the screen is created (e.g. on rotation), so Android can't restore
+        // their checked state by ID. Without this the chosen fund would silently fall back to the first one.
+        fundChips.getChildAt(savedInstanceState.getInt(STATE_FUND_INDEX, 0))?.let { fundChips.check(it.id) }
+        // The restored amount text cleared the preset selection; re-select the preset it matches, if any.
+        val amount = Format.parseAmount(amountInput.text?.toString().orEmpty())
+        val preset = ChurchData.presetAmounts.indexOfFirst { it.toDouble() == amount }
+        if (preset >= 0) amountChips.check(amountChips.getChildAt(preset).id)
+    }
+
     private fun filterChip(label: String): Chip =
         (layoutInflater.inflate(R.layout.item_filter_chip, fundChips, false) as Chip).apply {
             text = label
@@ -110,5 +126,9 @@ class GiveActivity : BaseActivity() {
         }
         findViewById<TextView>(R.id.emptyText).isVisible = gifts.isEmpty()
         findViewById<TextView>(R.id.totalText).text = getString(R.string.give_total, Format.money(gifts.sumOf { it.amount }))
+    }
+
+    private companion object {
+        const val STATE_FUND_INDEX = "fund_index"
     }
 }

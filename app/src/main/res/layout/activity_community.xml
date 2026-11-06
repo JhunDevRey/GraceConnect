@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_light"
-    android:orientation="vertical">
+    android:background="@color/background_light">
 
-    <include layout="@layout/view_screen_header" />
+    <!-- Header scrolls away with the content and comes back on scroll up, so short screens keep their space. -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:stateListAnimator="@null"
+        app:liftOnScroll="false">
+
+        <include layout="@layout/view_screen_header" />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <com.example.graceconnect.MaxWidthLinearLayout
+            android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/screen_padding"
+            app:contentMaxWidth="@dimen/content_max_width">
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/tabChips"
@@ -29,25 +41,26 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipGroups"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Widget.GraceConnect.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/small_groups" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipPrayer"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Widget.GraceConnect.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/prayer_wall" />
             </com.google.android.material.chip.ChipGroup>
 
             <!-- Small groups -->
-            <LinearLayout
+            <com.example.graceconnect.ColumnGridLayout
                 android:id="@+id/groupList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" />
+                app:gridColumnSpacing="@dimen/grid_spacing"
+                app:gridColumns="@integer/list_columns" />
 
             <!-- Prayer wall -->
             <LinearLayout
@@ -57,13 +70,11 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    app:cardBackgroundColor="@color/surface_white"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="2dp">
+                    app:cardBackgroundColor="@color/surface_white">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -81,7 +92,7 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/prayerLayout"
-                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                            style="@style/Widget.GraceConnect.TextInput"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
@@ -120,14 +131,15 @@
                                 android:text="@string/post" />
                         </LinearLayout>
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <LinearLayout
+                <com.example.graceconnect.ColumnGridLayout
                     android:id="@+id/prayerList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" />
+                app:gridColumnSpacing="@dimen/grid_spacing"
+                app:gridColumns="@integer/list_columns" />
             </LinearLayout>
-        </LinearLayout>
+        </com.example.graceconnect.MaxWidthLinearLayout>
     </androidx.core.widget.NestedScrollView>
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

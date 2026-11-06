@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "357938788528",
+    "project_id": "graceconnect-a1737",
+    "storage_bucket": "graceconnect-a1737.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357938788528:android:c5a50c67224341bc1ae375",
+        "android_client_info": {
+          "package_name": "com.example.graceconnect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARKsNhpe9xZQfsz5GgPhdBZDdhLo3LaLQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

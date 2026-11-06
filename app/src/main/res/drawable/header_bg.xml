@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Default header; inner screens replace it with a gradient in their own color (BaseActivity.setupScreen). -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/maroon_primary" />
+    <gradient
+        android:angle="315"
+        android:endColor="@color/maroon_dark"
+        android:startColor="@color/maroon_primary" />
     <corners
-        android:bottomLeftRadius="28dp"
-        android:bottomRightRadius="28dp" />
+        android:bottomLeftRadius="@dimen/header_corner_radius"
+        android:bottomRightRadius="@dimen/header_corner_radius" />
 </shape>

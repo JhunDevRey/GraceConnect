@@ -11,10 +11,16 @@
     <color name="person_red">#DD1F3A</color>
 
     <!-- Neutrals -->
-    <color name="background_light">#F5F3F0</color>
+    <color name="background_light">#F7F4F1</color>
     <color name="surface_white">#FFFFFF</color>
     <color name="text_primary">#2B2B2B</color>
     <color name="text_secondary">#6B6B6B</color>
     <color name="text_on_maroon">#FFFFFF</color>
     <color name="maroon_container">#F8DFE2</color>
+    <color name="outline_soft">#ECE6E1</color>
+
+    <!-- Soft tonal containers for icon tiles -->
+    <color name="blue_container">#E4EDF8</color>
+    <color name="orange_container">#FDF2D6</color>
+    <color name="white_translucent">#26FFFFFF</color>
 </resources>

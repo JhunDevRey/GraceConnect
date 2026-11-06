@@ -3,36 +3,35 @@ package com.example.graceconnect
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePadding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var bottomNav: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        enableBrandEdgeToEdge()
         super.onCreate(savedInstanceState)
+        // Home is only for signed-in users; anyone else goes to Login first.
+        if (!Auth.isSignedIn(this)) {
+            Auth.openClearingBackStack(this, LoginActivity::class.java)
+            return
+        }
         setContentView(R.layout.activity_main)
-        // Extend the maroon header behind the status bar and push the header content below it.
-        val headerBg = findViewById<View>(R.id.header_bg)
-        val logo = findViewById<View>(R.id.logo)
-        val welcomeCard = findViewById<View>(R.id.welcome_card)
-        val headerHeight = headerBg.layoutParams.height
-        val logoTop = (logo.layoutParams as ViewGroup.MarginLayoutParams).topMargin
-        val cardTop = (welcomeCard.layoutParams as ViewGroup.MarginLayoutParams).topMargin
+        // Extend the maroon header behind the status bar; a solid scrim keeps scrolled content out from under it.
+        val header = findViewById<View>(R.id.header_bg)
+        val statusScrim = findViewById<View>(R.id.status_scrim)
+        val headerTop = header.paddingTop
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             // The bottom nav pads itself for the navigation bar, so the root only needs side padding.
             v.setPadding(systemBars.left, 0, systemBars.right, 0)
-            headerBg.updateLayoutParams { height = headerHeight + systemBars.top }
-            logo.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin = logoTop + systemBars.top }
-            welcomeCard.updateLayoutParams<ViewGroup.MarginLayoutParams> { topMargin = cardTop + systemBars.top }
+            header.updatePadding(top = headerTop + systemBars.top)
+            statusScrim.updateLayoutParams { height = systemBars.top }
             insets
         }
 
@@ -50,10 +49,7 @@ class MainActivity : AppCompatActivity() {
         // Verse of the day -> share
         findViewById<View>(R.id.verseCard).setOnClickListener {
             val verse = ChurchData.verseOfTheDay()
-            val send = Intent(Intent.ACTION_SEND)
-                .setType("text/plain")
-                .putExtra(Intent.EXTRA_TEXT, getString(R.string.verse_share_text, verse.text, verse.reference))
-            startActivity(Intent.createChooser(send, getString(R.string.share)))
+            shareText(getString(R.string.verse_share_text, verse.text, verse.reference))
         }
 
         // Bottom navigation: Home stays selected; other tabs open their screen.

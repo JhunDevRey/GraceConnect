@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Rounded square behind list icons; tint it with android:backgroundTint. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/maroon_container" />
+    <corners android:radius="14dp" />
+</shape>

@@ -1,29 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Shared header for inner screens. Color and title are set in BaseActivity.setupScreen(). -->
+<!-- Compact header for short screens (phone landscape, split screen): back button and title share a row.
+     The tall version lives in layout-h480dp. Color, title and width are set in BaseActivity.setupScreen(). -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/header"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/header_bg"
-    android:paddingTop="16dp"
-    android:paddingBottom="28dp">
+    android:paddingTop="8dp"
+    android:paddingBottom="16dp"
+    app:layout_scrollFlags="scroll|enterAlways|snap">
 
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_gravity="start|center_vertical"
-        android:layout_marginStart="8dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="@string/back"
-        android:src="@drawable/ic_back" />
-
-    <TextView
-        android:id="@+id/screen_title"
-        android:layout_width="wrap_content"
+    <com.example.graceconnect.MaxWidthLinearLayout
+        android:id="@+id/header_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:fontFamily="sans-serif-medium"
-        android:textColor="@color/text_on_maroon"
-        android:textSize="22sp" />
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/screen_padding"
+        android:paddingEnd="@dimen/screen_padding">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/circle_translucent"
+            android:contentDescription="@string/back"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:padding="11dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/screen_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:maxLines="1"
+            android:textColor="@color/text_on_maroon"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </com.example.graceconnect.MaxWidthLinearLayout>
 </FrameLayout>

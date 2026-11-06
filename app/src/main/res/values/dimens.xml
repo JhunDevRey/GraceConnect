@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="header_corner_radius">32dp</dimen>
+    <dimen name="screen_padding">20dp</dimen>
+    <dimen name="grid_spacing">12dp</dimen>
+    <!-- Content is centered and capped at these widths on large screens. -->
+    <dimen name="content_max_width">1040dp</dimen>
+    <dimen name="form_max_width">640dp</dimen>
+    <!-- In sp so the Profile stat numbers grow with the user's text size. -->
+    <dimen name="stat_value_height">30sp</dimen>
+
+    <!-- Home header, compact by default for short screens (phone landscape); tall values are in values-h480dp.
+         The Explore tiles are pulled up into the header by home_header_overlap, so the header reserves that space. -->
+    <dimen name="home_welcome_text_size">22sp</dimen>
+    <dimen name="home_welcome_margin_top">12dp</dimen>
+    <dimen name="home_header_overlap">-32dp</dimen>
+    <dimen name="home_header_overlap_space">48dp</dimen>
+</resources>

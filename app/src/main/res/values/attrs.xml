@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ColumnGridLayout">
+        <attr name="gridColumns" format="integer" />
+        <attr name="gridColumnSpacing" format="dimension" />
+        <attr name="gridRowSpacing" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="MaxWidthLinearLayout">
+        <attr name="contentMaxWidth" format="dimension" />
+    </declare-styleable>
+</resources>

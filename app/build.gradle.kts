@@ -2,6 +2,14 @@ plugins {
     alias(libs.plugins.android.application)
 }
 
+// Firebase reads its project settings from app/google-services.json (download it from the Firebase console).
+// Without it the app still builds, but login and registration show a "Firebase is not set up" message.
+if (file("google-services.json").exists()) {
+    apply(plugin = "com.google.gms.google-services")
+} else {
+    logger.warn("app/google-services.json is missing: Firebase Authentication will not work until it is added.")
+}
+
 android {
     namespace = "com.example.graceconnect"
     compileSdk {
@@ -42,6 +50,8 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

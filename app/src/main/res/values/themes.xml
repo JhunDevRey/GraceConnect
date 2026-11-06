@@ -7,8 +7,69 @@
         <item name="colorOnPrimaryContainer">@color/maroon_dark</item>
         <item name="colorSecondaryContainer">@color/maroon_container</item>
         <item name="colorOnSecondaryContainer">@color/maroon_dark</item>
+        <item name="colorSurface">@color/surface_white</item>
+        <item name="colorOutline">@color/outline_soft</item>
         <item name="android:windowBackground">@color/background_light</item>
+        <!-- Keep white surfaces white; M3 otherwise tints raised cards and the nav bar with the primary color. -->
+        <item name="elevationOverlayEnabled">false</item>
+
+        <!-- Rounded, flat, outlined components for a clean modern look -->
+        <item name="materialCardViewStyle">@style/Widget.GraceConnect.Card</item>
+        <item name="textInputStyle">@style/Widget.GraceConnect.TextInput</item>
+        <item name="materialButtonStyle">@style/Widget.GraceConnect.Button</item>
+        <item name="chipStyle">@style/Widget.GraceConnect.Chip</item>
+        <item name="bottomNavigationStyle">@style/Widget.GraceConnect.BottomNav</item>
     </style>
 
     <style name="Theme.GraceConnect" parent="Base.Theme.GraceConnect" />
+
+    <style name="Widget.GraceConnect.Card" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardBackgroundColor">@color/surface_white</item>
+        <item name="cardCornerRadius">22dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/outline_soft</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="Widget.GraceConnect.TextInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">14dp</item>
+        <item name="boxCornerRadiusTopEnd">14dp</item>
+        <item name="boxCornerRadiusBottomStart">14dp</item>
+        <item name="boxCornerRadiusBottomEnd">14dp</item>
+        <item name="boxStrokeColor">@color/maroon_primary</item>
+    </style>
+
+    <style name="Widget.GraceConnect.Button" parent="Widget.Material3.Button">
+        <item name="android:minHeight">52dp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <style name="Widget.GraceConnect.Chip" parent="Widget.Material3.Chip.Filter">
+        <item name="chipCornerRadius">20dp</item>
+        <item name="chipStrokeColor">@color/outline_soft</item>
+    </style>
+
+    <style name="Widget.GraceConnect.BottomNav" parent="Widget.Material3.BottomNavigationView">
+        <item name="backgroundTint">@color/surface_white</item>
+        <item name="itemActiveIndicatorStyle">@style/Widget.GraceConnect.BottomNav.Indicator</item>
+    </style>
+
+    <style name="Widget.GraceConnect.BottomNav.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/maroon_container</item>
+    </style>
+
+    <!-- Text -->
+    <style name="TextAppearance.GraceConnect.Section" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.GraceConnect.Overline" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.12</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">11sp</item>
+    </style>
 </resources>

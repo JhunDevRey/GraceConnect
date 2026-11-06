@@ -1,8 +1,8 @@
 package com.example.graceconnect
 
 import android.os.Bundle
+import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
@@ -14,7 +14,7 @@ class SermonsActivity : BaseActivity() {
 
     private lateinit var searchInput: TextInputEditText
     private lateinit var filterChips: ChipGroup
-    private lateinit var list: LinearLayout
+    private lateinit var list: ViewGroup
     private lateinit var emptyText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {

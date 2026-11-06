@@ -2,6 +2,7 @@ package com.example.graceconnect
 
 import android.os.Bundle
 import android.text.format.DateUtils
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.isVisible
@@ -15,12 +16,13 @@ import com.google.android.material.textfield.TextInputLayout
 
 class CommunityActivity : BaseActivity() {
 
-    private lateinit var groupList: LinearLayout
+    private lateinit var groupList: ViewGroup
     private lateinit var prayerSection: LinearLayout
-    private lateinit var prayerList: LinearLayout
+    private lateinit var prayerList: ViewGroup
     private lateinit var prayerLayout: TextInputLayout
     private lateinit var prayerInput: TextInputEditText
     private lateinit var anonymousCheck: MaterialCheckBox
+    private lateinit var tabChips: ChipGroup
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,17 +36,26 @@ class CommunityActivity : BaseActivity() {
         prayerInput = findViewById(R.id.prayerInput)
         anonymousCheck = findViewById(R.id.anonymousCheck)
 
-        findViewById<ChipGroup>(R.id.tabChips).setOnCheckedStateChangeListener { _, checked ->
-            val showPrayer = checked.firstOrNull() == R.id.chipPrayer
-            prayerSection.isVisible = showPrayer
-            groupList.isVisible = !showPrayer
-        }
+        tabChips = findViewById(R.id.tabChips)
+        tabChips.setOnCheckedStateChangeListener { _, _ -> showSelectedTab() }
 
         prayerInput.doAfterTextChanged { prayerLayout.error = null }
         findViewById<MaterialButton>(R.id.postButton).setOnClickListener { postPrayer() }
 
         renderGroups()
         renderPrayers()
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        // The selected tab chip is restored after a rotation, but the section visibility is not.
+        showSelectedTab()
+    }
+
+    private fun showSelectedTab() {
+        val showPrayer = tabChips.checkedChipId == R.id.chipPrayer
+        prayerSection.isVisible = showPrayer
+        groupList.isVisible = !showPrayer
     }
 
     // ---------- Small groups ----------

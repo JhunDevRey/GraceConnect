@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="home_welcome_text_size">28sp</dimen>
+    <dimen name="home_welcome_margin_top">28dp</dimen>
+    <dimen name="home_header_overlap">-48dp</dimen>
+    <dimen name="home_header_overlap_space">72dp</dimen>
+</resources>

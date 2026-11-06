@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Maroon brand header shared by the login and register screens. Its top padding grows with the status bar
+     (see AuthActivity), and the form card below is pulled up to overlap its rounded bottom. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/header_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/home_header_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/screen_padding"
+    android:paddingTop="24dp"
+    android:paddingEnd="@dimen/screen_padding"
+    android:paddingBottom="@dimen/home_header_overlap_space">
+
+    <ImageView
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@drawable/logo_bg"
+        android:importantForAccessibility="no"
+        android:padding="8dp"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/app_name"
+        android:textColor="@color/text_on_maroon"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:alpha="0.85"
+        android:text="@string/tagline"
+        android:textColor="@color/text_on_maroon"
+        android:textSize="14sp" />
+</LinearLayout>

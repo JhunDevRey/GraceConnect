@@ -3,8 +3,8 @@ package com.example.graceconnect
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.ViewGroup
 import android.provider.CalendarContract
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.isVisible
 import com.google.android.material.button.MaterialButton
@@ -13,7 +13,7 @@ import com.google.android.material.chip.ChipGroup
 class EventsActivity : BaseActivity() {
 
     private lateinit var filterChips: ChipGroup
-    private lateinit var list: LinearLayout
+    private lateinit var list: ViewGroup
     private lateinit var emptyText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -39,6 +39,9 @@ class ProfileActivity : BaseActivity() {
         onBackPressedDispatcher.addCallback(this, unsavedChangesCallback)
         findViewById<MaterialButton>(R.id.saveButton).setOnClickListener { saveProfile() }
         findViewById<MaterialButton>(R.id.clearButton).setOnClickListener { confirmClear() }
+        findViewById<MaterialButton>(R.id.logoutButton).setOnClickListener { confirmLogout() }
+        findViewById<TextView>(R.id.accountEmail).text =
+            getString(R.string.signed_in_as, Auth.currentUser(this)?.email.orEmpty())
 
         loadProfile()
     }
@@ -112,6 +115,15 @@ class ProfileActivity : BaseActivity() {
                 renderStats()
                 toast(getString(R.string.data_cleared))
             }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
+    }
+
+    private fun confirmLogout() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.logout_title)
+            .setMessage(R.string.logout_message)
+            .setPositiveButton(R.string.logout) { _, _ -> Auth.logout(this) }
             .setNegativeButton(R.string.cancel, null)
             .show()
     }
