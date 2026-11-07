@@ -17,6 +17,12 @@ All versions are listed on the [Releases page](https://github.com/JhunDevRey/Gra
 
 To update, download and install the latest APK the same way. Your account stays signed in.
 
+## What's new
+
+### 1.1
+
+- **Forgot password?** on the login screen. Type your email and tap it, and you'll get an email with a link to set a new password.
+
 ## How sign-in works (Firebase Authentication)
 
 GraceConnect uses Firebase Authentication with email and password only. Firebase checks the details and stores the passwords. The app only sends what the user types and reacts to the answer.
