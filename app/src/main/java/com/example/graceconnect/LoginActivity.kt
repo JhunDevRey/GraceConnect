@@ -30,6 +30,7 @@ class LoginActivity : AuthActivity() {
         clearErrorOnEdit(emailLayout, passwordLayout)
         onDone(passwordLayout.editText!!) { login() }
         loginButton.setOnClickListener { login() }
+        findViewById<MaterialButton>(R.id.forgotPassword).setOnClickListener { sendPasswordReset(it as MaterialButton) }
         findViewById<MaterialButton>(R.id.goToRegister).setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
@@ -61,6 +62,27 @@ class LoginActivity : AuthActivity() {
                 setBusy(loginButton, false, R.string.logging_in, R.string.login)
                 toast(Auth.errorMessage(this, task.exception))
             }
+        }
+    }
+
+    /** Emails a reset link to the address typed in the email field. */
+    private fun sendPasswordReset(button: MaterialButton) {
+        val email = text(emailLayout).trim()
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            emailLayout.error = getString(R.string.reset_email_required)
+            emailLayout.requestFocus()
+            return
+        }
+        val auth = authOrWarn() ?: return
+
+        button.isEnabled = false
+        auth.sendPasswordResetEmail(email).addOnCompleteListener(this) { task ->
+            button.isEnabled = true
+            // Firebase doesn't reveal whether the account exists, so the success message stays neutral.
+            toast(
+                if (task.isSuccessful) getString(R.string.reset_email_sent, email)
+                else Auth.errorMessage(this, task.exception)
+            )
         }
     }
 }

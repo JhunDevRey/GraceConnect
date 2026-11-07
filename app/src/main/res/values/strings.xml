@@ -168,6 +168,9 @@
     <string name="register_success">Your account has been created</string>
     <string name="name_required">Please enter your name</string>
     <string name="password_required">Please enter your password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="reset_email_required">Enter your email to reset your password</string>
+    <string name="reset_email_sent">If an account exists for %1$s, a password reset link has been sent to it</string>
     <string name="password_too_short">Password must be at least %1$d characters</string>
     <string name="passwords_do_not_match">Passwords do not match</string>
     <string name="auth_error_invalid_credentials">Incorrect email or password</string>
